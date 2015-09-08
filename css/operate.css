@@ -1,0 +1,19 @@
+.hidden {
+  display: none;
+}
+
+.appear {
+  display: inline-block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.inline {
+  display: inline;
+}
+
+.block {
+  display: block;
+}
