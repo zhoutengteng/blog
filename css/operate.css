@@ -1,3 +1,10 @@
+.visibilityhidden {
+  visibility: hidden;
+}
+
+.visibilityvisible {
+  visibility:visible;
+}
 .hidden {
   display: none;
 }

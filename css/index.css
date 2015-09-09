@@ -5,9 +5,17 @@
 body {
     background-color: rgba(89, 87, 82, 0.36);
 }
+
+button {
+  outline: none;
+}
+
+
+
 /*the whole container of the web*/
 #container {
-    width: auto;
+    width: 100%;
+    min-height:657px
 }
 
 /*the head of the container */
@@ -16,18 +24,25 @@ body {
     height: 4em;
     background-color: rgba(13, 103, 238,1);
     overflow: hidden;
+
 }
 
 /*登陆注册注销靠右的按钮的设置*/
 
 .logReLoRight {
+    outline: none;
     float: right;
     height: 100%;
     width: 5%;
     background-color: rgba(13, 103, 238,1);
     border-width: 0;
     color: white;
+    border-style: none;
+    right: 20px;
+
 }
+
+
 
 /*登陆注册注销靠左的按钮的设置*/
 
@@ -38,8 +53,9 @@ body {
     background-color: rgba(13, 103, 238, 1);
     border-width: 0;
     color: white;
-
+    border-style: none;
 }
+
 a:link {color: #FF0000}		/* 未访问的链接 */
 a:visited {color: #00FF00}	/* 已访问的链接 */
 a:hover {color: #FF00FF}	/* 鼠标移动到链接上 */

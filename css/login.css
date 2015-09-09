@@ -1,0 +1,76 @@
+#container {
+    width: 100%;
+    min-height: 657px
+}
+
+/*the head of the container */
+
+#container_head {
+    width: 100%;
+    height: 70px;
+    background-color: rgba(13, 103, 238, 1);
+    overflow: hidden;
+}
+#login_head {
+    width: 100%;
+    height: 100%;
+}
+#container_body {
+    width: 50%;
+    height: 500px;
+    margin-left: 25%;
+    background-color: rgba(171, 215, 148, 0.84);
+}
+#container_foot {
+    height: 87px;
+}
+
+#login-form {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+
+#login-form :first-child  {
+    margin-top:10px;
+}
+
+#login-form p {
+    margin-bottom: 10px;
+}
+
+#login-form p span {
+    display: inline-block;
+    width: 30%;
+    font-size: 2em;
+    margin-left: 10px;
+    text-align: center;
+}
+#login-form p input {
+    text-align: left;
+    display: inline-block;
+    font-size: 2em;
+    margin-left: 10px;
+}
+
+#login-form :first-child  + p + p +　p  {
+  text-align: right;
+}
+
+#login-form p button {
+    display: inline-block;
+    /*margin-right: 170px;*/
+    margin-top: 20px;
+    font-size: 1.5em;
+}
+
+#login-form input[type="radio"]  + span {
+    display: inline-block;
+    font-size:1.5em;
+    width: auto;
+}
+
+/*
+#login-form :first-child  +  p + p +　p  ＋  p  span {
+    font-size: 1.5em;
+}*/
