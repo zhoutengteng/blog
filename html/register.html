@@ -9,17 +9,12 @@
 
     <link rel="stylesheet" type="text/css" href="/blog/css/operate.css" />
     <link rel="stylesheet" type="text/css" href="/blog/css/index.css" />
-    <link rel="stylesheet" type="text/css" href="/blog/css/login.css" />
+    <link rel="stylesheet" type="text/css" href="/blog/css/register.css" />
     <script src="/blog/js/md5.js"></script>
     <script src="/blog/js/operate.js">
     </script>
-    <script src="/blog/js/login.js"></script>
 
-    <!-- /*<style type="text/css">
-       button {
-            outline:none;
-        }
-    </style>*/ -->
+    <script src="/blog/js/register.js"></script>
 
 </head>
 
@@ -33,22 +28,38 @@
             </div>
         </div>
         <div id="container_body">
-            <form id="login-form" method="post" action="/blog/index.html">
+            <form id="register-form" method="post" action="/blog/index.html">
                 <p>
                     <span> username: </span>
                     <input type="text" id="username" name="username">
+                    <span>  用户名只包括字母和数子和下划线的任意 </span>
                 </p>
                 <p>
                     <span> password: </span>
                     <input type="password" id="input-password">
+                    <span> 密码不得有空格</span>
+                </p>
+                <p>
+                    <span> </span>
+                    <input type="password" id="input-password-again">
+                    <span> 重复输入的你的密码</span>
                 </p>
                 <p>
                     <input type="hidden" id="md5-password" name="password">
                 </p>
                 <p>
-                    <input type="radio">
-                    <span>保存登陆信息７天　</span>
-                    <button type="button" id="buttonSubmit">login</button>
+                    <span> email: </span>
+                    <input type="text" id="email" name="email">
+                    <span>  邮箱地址 </span>
+                </p>
+                <p>
+                    <span> career: </span>
+                    <input type="text" id="career" name="email">
+                    <span>  职业  </span>
+                </p>
+
+                <p>
+                    <button type="button" id="buttonSubmit">register</button>
                 </p>
                 <p>
                     <span id="report" class="visibilityhidden "> </span>

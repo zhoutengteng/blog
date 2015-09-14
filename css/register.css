@@ -32,25 +32,29 @@
     text-align: center;
 }
 
-#login-form :first-child  {
+#register-form :first-child  {
     margin-top:10px;
 }
 
-#login-form p {
+#register-form p {
     margin-bottom: 10px;
     width: 80%;
 }
 
-#login-form p span {
+#register-form p span {
     display: inline-block;
     width: 30%;
-    font-size: 2em;
+    font-size: 1.5em;
     margin-left: 10px;
     text-align: center;
 }
 
+#register-form p :first-child + input + span {
+    font-size: 0.8em;
+}
 
-#login-form p input {
+
+#register-form p input {
     text-align: left;
     display: inline-block;
     font-size: 1em;
@@ -59,24 +63,16 @@
     width: 30%;
 }
 
-#login-form :first-child  + p + p +　p  {
+
+
+#register-form :first-child  + p + p +　p  {
   text-align: right;
 }
 
-#login-form p button {
+#register-form p button {
     display: inline-block;
     /*margin-right: 170px;*/
+    margin-left: 50%;
     margin-top: 20px;
     font-size: 1.5em;
 }
-
-#login-form input[type="radio"]  + span {
-    display: inline-block;
-    font-size:1.5em;
-    width: auto;
-}
-
-/*
-#login-form :first-child  +  p + p +　p  ＋  p  span {
-    font-size: 1.5em;
-}*/

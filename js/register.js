@@ -36,20 +36,45 @@ var adjust = function() {
 }
 
 
-function checkForm() {
-　　//to-do 成功登陆后的保存cookie的处理
-
-
+function submitForm() {
     var username = document.getElementById("username");
     var input_pwd = document.getElementById('input-password');
+    var input_password_again = document.getElementById("input_password_again");
     var md5_pwd = document.getElementById('md5-password');
     var report = document.getElementById("report");
+    var email = document.getElementById("email");
+    var career = document.getElementById('career');
+    var form = document.getElementById('register-form');
     Operator.addClass(report, "block");
     // 把用户输入的明文变为MD5:
     md5_pwd.value = hex_md5(input_pwd.value);
     //引入数据库　判断登陆者　数据库存md5和用户名
     var reportStr = "";
     var trueTrue = true;
+    var queryStr = "?username="+username.value+"&" +
+                   "pwd=" + md5_pwd.value + "&" +
+                   "email=" + email.value + "&" +
+                   "career=" + career.value + "&";
+
+    saveUser("/blog/php/register.php", queryStr);
+　　//所有代码转义　防sql注入
+
+　　//检查用户名格式　
+
+　　//检查密码格式
+
+   //检查邮箱格式
+
+   //检查用户名是否已被注册
+
+   //检查邮箱是否被注册
+
+   //检查两次密码是否输入正确
+
+   //存入用户名　md5后的密码　邮箱　职业　　
+
+   //to-do 　　邮箱激活是否
+
     // if (username.value !== "admin") {
     //     trueTrue = false;
     //     reportStr += "输入信息不正确，　未能成功登陆\n";
@@ -58,56 +83,28 @@ function checkForm() {
     //     reportStr += "密码输入错误\n";
     //     trueTrue = false;
     // }
-
-    if (trueTrue) {
-        Operator.removeClass(report, "visibilityvisible");
-        Operator.addClass(report, "visibilityhidden");
-        return true;
-    }
+    //
+     if (trueTrue) {
+         Operator.removeClass(report, "visibilityvisible");
+         Operator.addClass(report, "visibilityhidden");
+         document.getElementById("register-form").submit();
+         return true;
+     }
     // report.setAttribute("Name","visible");
     // report.className = "visibilityhidden";
     // operator 来自自己写的类
-    Operator.removeClass(report, "visibilityhidden");
-    Operator.addClass(report, "visibilityvisible");
-    report.innerHTML = reportStr;
+    // Operator.removeClass(report, "visibilityhidden");
+    // Operator.addClass(report, "visibilityvisible");
+    // report.innerHTML = reportStr;
     return false;
-}
 
-function loginForm() {
-    if (checkForm()) {
-         document.getElementById('login-form').submit();
-        return true;
-    } else {
-        return false;
-    }
 
 }
 
 
 
-function checkFormByServe(responseText) {
-    //  alert(responseText);
-    var obj = eval("(" + responseText + ')');
-    // alert(obj["name"]);
-    var username = document.getElementById("username");
-    var input_pwd = document.getElementById('input-password');
-    var report = document.getElementById("report");
-    var reportStr = "";
-    if (obj["name"] && obj["password"]) {
-        return true;
-    }
-    if (!obj["password"]) {
-        reportStr += "你输入的密码不对";
-    }
-    Operator.removeClass(report, "visibilityhidden");
-    Operator.addClass(report, "visibilityvisible");
-    report.innerHTML = reportStr;
-    return false;
-}
 
-
-
-function testUser(filepath,str,func) {
+function saveUser(filepath,str) {
     var xmlHttp = GetXmlHttpObject()
     if (xmlHttp == null) {
         alert("Browser does not support HTTP Request")
@@ -116,30 +113,17 @@ function testUser(filepath,str,func) {
     var url = filepath;
     url = url + "" + str;
     url = url + "&ssid=" + Math.random();
-
-    if (checkForm()) {
-        xmlHttp.onreadystatechange = stateChanged(xmlHttp, func)
-        xmlHttp.open("GET", url, true);
-        xmlHttp.send(null);
-    }
+//    alert(url);
+    xmlHttp.onreadystatechange = stateChanged(xmlHttp)
+    xmlHttp.open("GET", url, true);
+    xmlHttp.send(null);
 }
 
-function stateChanged(xmlHttp, func) {
+function stateChanged(xmlHttp) {
     return function() {
         if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete") {
             // alert(xmlHttp.responseText);
           // document.getElementById("txtHint").innerHTML = xmlHttp.responseText;
-        //    func();
-            if (checkFormByServe(xmlHttp.responseText)) {
-                var obj = eval("(" + xmlHttp.responseText + ')');
-                //to-do
-                Operator.delCookie("name");
-                // alert(Operator.getCookie("name"));
-                // alert(document.cookie);
-                Operator.setCookie("name", obj["username"]);
-                // alert(document.cookie);
-                document.getElementById("login-form").submit();
-            }
         }
     };
 }
@@ -166,28 +150,6 @@ function GetXmlHttpObject() {
 
 window.onload = function() {
     adjust();
+    document.getElementById('buttonSubmit').onclick = submitForm;
 
-
-    document.getElementById("buttonSubmit").onclick = function() {
-        var username = document.getElementById("username");
-        var input_pwd = document.getElementById('input-password');
-        var md5_pwd = document.getElementById('md5-password');
-        md5_pwd.value = hex_md5(input_pwd.value);
-        var queryStr = "?name=" + username.value +
-                      "&pwd=" + md5_pwd.value;
-
-        testUser("/blog/php/login.php", queryStr, loginForm);
-    }
-
-    var inputListen = document.getElementsByTagName('input');
-
-    for (var i = 0; i < inputListen.length; i++) {
-        inputListen[i].onfocus = function(i) {
-            return function() {
-                var report = document.getElementById("report");
-                Operator.removeClass(report, "visibilityvisible");
-                Operator.addClass(report, "visibilityhidden");
-            };
-        }(i);
-    }
 }
